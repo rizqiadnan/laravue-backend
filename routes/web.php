@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+// trigger error captured by sentry 
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
